@@ -1,0 +1,8 @@
+(def car first)
+(def cdr rest)
+(def ash bit-shift-left)
+(def #^:macro defvar #'defonce)
+(defmacro defparameter [var val] `(def ~var ~val))
+(defmacro setf [var val] `(alter-var-root #'~var (constantly ~val)))
+(defmacro defun [sym args & body] `(defn ~sym [~@args] ~@body))
+(defun exit () (System/exit 0))
